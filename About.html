@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faith Lokori | FrontEnd Developer & ICT Trainer</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='50%' y='50%' font-family='Arial, sans-serif' font-size='24' font-weight='bold' text-anchor='middle' dominant-baseline='middle' fill='%2310b981'>F</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='50%' y='50%' font-family='Arial, sans-serif' font-size='24' font-weight='bold' text-anchor='middle' dominant-baseline='middle' fill='%2310b981'>F</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --primary-color: #10b981;
+            --primary-hover: #059669;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #34d399, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #34d399;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .sidebar-item {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .sidebar-item:hover {
+            background: rgba(52, 211, 153, 0.1);
+            border-left: 3px solid #34d399;
+        }
+        
+        .sidebar-item.active {
+            background: rgba(52, 211, 153, 0.1);
+            border-left: 3px solid #34d399;
+        }
+        
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .tech-tag {
+            background: rgba(52, 211, 153, 0.2);
+            color: #34d399;
+            border: 1px solid rgba(52, 211, 153, 0.3);
+        }
+        
+        .tech-tag:hover {
+            background: rgba(128, 0, 0, 0.3);
+            border-color: #800000;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-gray-900/95 backdrop-blur-sm z-50 border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <span class="text-xl font-bold">Faith</span>
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-white">HOME</a>
+                    <a href="About.html" class="nav-link text-white">ABOUT</a>
+                    <a href="work.html" class="nav-link text-gray-300 hover:text-white">WORK</a>
+                    <a href="contact.html" class="nav-link text-gray-300 hover:text-white">CONTACT</a>
+                    <a href="./img/Faith-Lokori-.pdf" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full transition-colors inline-block">
+                        RESUME
+                    </a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4">
+                <a href="index.html" class="block py-2 text-gray-300 hover:text-white">HOME</a>
+                <a href="resume.html" class="block py-2 text-white">ABOUT/a>
+                <a href="work.html" class="block py-2 text-gray-300 hover:text-white">WORK</a>
+                <a href="contact.html" class="block py-2 text-gray-300 hover:text-white">CONTACT</a>
+                <a href="Faith Resume.pdf" class="bg-maroon-500 hover:bg-maroon-600 text-white px-6 py-2 rounded-full transition-colors inline-block mt-2">
+                <a href="Faith Resume.pdf" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full transition-colors inline-block mt-2">
+                    RESUME
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Resume Section -->
+    <section class="pt-24 pb-20 min-h-screen">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <!-- Sidebar Navigation -->
+                <div class="lg:col-span-1">
+                    <div class="bg-gray-800 rounded-lg p-6 sticky top-24">
+                        <div class="space-y-2">
+                            <div class="sidebar-item active p-4 rounded-lg" onclick="showSection('experience')">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-briefcase text-green-600"></i>
+                                    <span class="font-medium">Experience</span>
+                                </div>
+                            </div>
+                            
+                            <div class="sidebar-item p-4 rounded-lg" onclick="showSection('services')">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-cogs text-green-600"></i>
+                                    <span class="font-medium">Services</span>
+                                </div>
+                            </div>
+                            <div class="sidebar-item p-4 rounded-lg" onclick="showSection('skills')">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-code text-green-600"></i>
+                                    <span class="font-medium">Skills</span>
+                                </div>
+                            </div>
+                            <div class="sidebar-item p-4 rounded-lg" onclick="showSection('about')">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-user text-green-600"></i>
+                                    <span class="font-medium">About me</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="lg:col-span-3">
+                    <!-- Experience Section -->
+                    <div id="experience" class="content-section active">
+                        <h2 class="text-3xl font-bold mb-8">
+                            <span class="gradient-text">Professional Experience</span>
+                        </h2>
+                        
+                        <div class="space-y-8">
+                            <div class="bg-gray-800 rounded-lg p-6">
+                                <h3 class="text-xl font-bold text-white mb-2">ICT Guide (Trainer)</h3>
+                                <p class="text-green-600 mb-4">Learning Lions • 2024 – Present</p>
+                                <p class="text-gray-400 mb-2">Loropio</p>
+                                <p class="text-gray-300 mb-4">
+                                    Teach learners how to use smartphones and digital tools for learning, communication, and work.
+                                </p>
+                                <ul class="text-gray-300 space-y-2 mb-4">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                        <span>Train participants in essential apps like Google Workspace, social media, and online learning platforms</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                        <span>Build digital literacy by teaching safe, responsible, and confident use of mobile technology</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                        <span>Guide learners through hands-on activities, practical exercises, and real-life digital tasks</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                        <span>Mentor and motivate learners—especially youth and women—to explore tech and online opportunities</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                        <span>Promote digital inclusion by ensuring equal access for all participants</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                        <span>Work with other trainers to plan sessions, share ideas, and improve training materials</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                        <span>Track progress, prepare reports, and support program goals</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                        <span>Represent the Mobile LEAP program professionally and act as a role model for digital responsibility</span>
+                                    </li>
+                                </ul>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag px-3 py-1 rounded-full text-xs">Digital Literacy</span>
+                                    <span class="tech-tag px-3 py-1 rounded-full text-xs">Google Workspace</span>
+                                    <span class="tech-tag px-3 py-1 rounded-full text-xs">Mobile Technology</span>
+                                    <span class="tech-tag px-3 py-1 rounded-full text-xs">Mentoring</span>
+                                    <span class="tech-tag px-3 py-1 rounded-full text-xs">Digital Inclusion</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-800 rounded-lg p-6">
+                                <h3 class="text-xl font-bold text-white mb-2">Front-End Developer</h3>
+                                <p class="text-green-600 mb-4">Freelancer • 2023 – Present</p>
+                                <p class="text-gray-400 mb-2">Loropio</p>
+                                <p class="text-gray-300 mb-4">
+                                    Build and maintain responsive, user-friendly websites using HTML, CSS, JavaScript, and Bootstrap.
+                                </p>
+                                <ul class="text-gray-300 space-y-2 mb-4">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                        <span>Convert UI/UX designs into clean and functional web pages</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                        <span>Ensure websites work well on mobile, tablet, and desktop</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                        <span>Collaborate with designers and backend developers to complete website features</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                        <span>Debug and fix front-end issues to improve user experience</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                        <span>Write clean, well-organized, and easy-to-maintain code</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                        <span>Use Git and GitHub for version control and project collaboration</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                        <span>Integrate basic APIs when needed</span>
+                                    </li>
+                                </ul>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag px-3 py-1 rounded-full text-xs">HTML5</span>
+                                    <span class="tech-tag px-3 py-1 rounded-full text-xs">CSS3</span>
+                                    <span class="tech-tag px-3 py-1 rounded-full text-xs">JavaScript</span>
+                                    <span class="tech-tag px-3 py-1 rounded-full text-xs">Bootstrap</span>
+                                    <span class="tech-tag px-3 py-1 rounded-full text-xs">Git/GitHub</span>
+                                    <span class="tech-tag px-3 py-1 rounded-full text-xs">UI/UX</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-800 rounded-lg p-6">
+                                <h3 class="text-xl font-bold text-white mb-2">Mentor</h3>
+                                <p class="text-green-600 mb-4">Techdada • 2023 – Present</p>
+                                <p class="text-gray-400 mb-2">Loropio</p>
+                                <p class="text-gray-300 mb-4">
+                                    Mentors girls and guides them in developing ICT skills.
+                                </p>
+                                <ul class="text-gray-300 space-y-2 mb-4">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                        <span>Provides hands-on training in digital literacy and technology</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                        <span>Empowers young women to explore careers in tech with confidence</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                        <span>Offers supportive female role models and a safe learning environment</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                        <span>Helps girls build skills in coding, problem-solving, and digital creativity</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                        <span>Encourages career growth and leadership in the ICT field</span>
+                                    </li>
+                                </ul>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag px-3 py-1 rounded-full text-xs">Mentoring</span>
+                                    <span class="tech-tag px-3 py-1 rounded-full text-xs">Digital Literacy</span>
+                                    <span class="tech-tag px-3 py-1 rounded-full text-xs">Women Empowerment</span>
+                                    <span class="tech-tag px-3 py-1 rounded-full text-xs">Coding</span>
+                                    <span class="tech-tag px-3 py-1 rounded-full text-xs">Leadership</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Services Section -->
+                    <div id="services" class="content-section">
+                        <h2 class="text-3xl font-bold mb-8">
+                            <span class="gradient-text">Services I Offer</span>
+                        </h2>
+                        
+                        <div class="space-y-6">
+                            <!-- Service 1: Web Development and Design -->
+                            <div class="bg-gray-800 rounded-lg p-6">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-green-900 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-code text-green-300"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-white mb-2">Web Development and Design</h3>
+                                        <p class="text-gray-300 mb-4">
+                                            Creating modern, responsive, and user-friendly websites that combine stunning design with powerful functionality. I specialize in building custom web solutions tailored to your business needs.
+                                        </p>
+                                        <ul class="text-gray-400 space-y-2 mb-4">
+                                            <li class="flex items-start">
+                                                <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                                <span>Custom website design and development using HTML5, CSS3, JavaScript</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                                <span>Responsive design that works perfectly on all devices</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                                <span>Modern UI/UX design with user experience focus</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                                <span>Frontend framework integration (Bootstrap, Tailwind CSS)</span>
+                                            </li>
+                                        </ul>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="tech-tag px-3 py-1 rounded-full text-xs">HTML5</span>
+                                            <span class="tech-tag px-3 py-1 rounded-full text-xs">CSS3</span>
+                                            <span class="tech-tag px-3 py-1 rounded-full text-xs">JavaScript</span>
+                                            <span class="tech-tag px-3 py-1 rounded-full text-xs">Bootstrap</span>
+                                            <span class="tech-tag px-3 py-1 rounded-full text-xs">PHP</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Service 2: ICT Trainer and Coach -->
+                            <div class="bg-gray-800 rounded-lg p-6">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-green-900 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-chalkboard-teacher text-green-300"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-white mb-2">ICT Trainer and Coach</h3>
+                                        <p class="text-gray-300 mb-4">
+                                            Comprehensive ICT training and coaching services designed to empower individuals with essential digital skills. I provide hands-on training in web development, digital literacy, and technical skills development.
+                                        </p>
+                                        <ul class="text-gray-400 space-y-2 mb-4">
+                                            <li class="flex items-start">
+                                                <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                                <span>Web development training for beginners and intermediate learners</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                                <span>Digital literacy and computer skills training</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                                <span>One-on-one coaching and personalized learning plans</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                                <span>Group workshops and corporate training sessions</span>
+                                            </li>
+                                        </ul>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="tech-tag px-3 py-1 rounded-full text-xs">ICT Training</span>
+                                            <span class="tech-tag px-3 py-1 rounded-full text-xs">Digital Literacy</span>
+                                            <span class="tech-tag px-3 py-1 rounded-full text-xs">Web Education</span>
+                                            <span class="tech-tag px-3 py-1 rounded-full text-xs">Coaching</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Service 3: Mentoring -->
+                            <div class="bg-gray-800 rounded-lg p-6">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-green-900 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-hands-helping text-green-300"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-white mb-2">Mentoring</h3>
+                                        <p class="text-gray-300 mb-4">
+                                            Personalized mentoring services focused on guiding young women and aspiring developers in their tech journey. I provide career guidance, skill development support, and empowerment to help achieve professional goals.
+                                        </p>
+                                        <ul class="text-gray-400 space-y-2 mb-4">
+                                            <li class="flex items-start">
+                                                <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                                <span>Career guidance and professional development mentoring</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                                <span>Women in tech empowerment and support programs</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                                <span>Skill-building and portfolio development guidance</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <i class="fas fa-check-circle text-green-600 mt-1 mr-2 text-sm"></i>
+                                                <span>Leadership development and confidence building</span>
+                                            </li>
+                                        </ul>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="tech-tag px-3 py-1 rounded-full text-xs">Mentoring</span>
+                                            <span class="tech-tag px-3 py-1 rounded-full text-xs">Women Empowerment</span>
+                                            <span class="tech-tag px-3 py-1 rounded-full text-xs">Leadership</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skills Section -->
+                    <div id="skills" class="content-section">
+                        <h2 class="text-3xl font-bold mb-8">
+                            <span class="gradient-text">Skills</span>
+                        </h2>
+                        
+                        <!-- Technical Skills -->
+                        <div class="mb-12">
+                            <h3 class="text-2xl font-bold text-white mb-6 text-center">Technical Skills</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <!-- Web Development -->
+                                <div class="bg-gray-800 rounded-lg p-6">
+                                    <div class="flex items-center space-x-4 mb-4">
+                                        <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-code text-white text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-bold text-lg">Web Development</h4>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-400 text-sm">HTML5, CSS3, JavaScript, PHP</p>
+                                </div>
+
+                                <!-- ICT Training -->
+                                <div class="bg-gray-800 rounded-lg p-6">
+                                    <div class="flex items-center space-x-4 mb-4">
+                                        <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-chalkboard-teacher text-white text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-bold text-lg">ICT Training</h4>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-400 text-sm">Digital literacy, Technology education</p>
+                                </div>
+
+                                <!-- Database -->
+                                <div class="bg-gray-800 rounded-lg p-6">
+                                    <div class="flex items-center space-x-4 mb-4">
+                                        <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-database text-white text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-bold text-lg">Database</h4>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-400 text-sm">MySQL,SQL, Database design</p>
+                                </div>
+
+                                <!-- Responsive Design -->
+                                <div class="bg-gray-800 rounded-lg p-6">
+                                    <div class="flex items-center space-x-4 mb-4">
+                                        <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-mobile-alt text-white text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-bold text-lg">Responsive Design</h4>                                      </div>
+                                    </div>
+                                    <p class="text-gray-400 text-sm">Mobile-first, Cross-browser compatibility</p>
+                                </div>
+
+                                <!-- Version Control -->
+                                <div class="bg-gray-800 rounded-lg p-6">
+                                    <div class="flex items-center space-x-4 mb-4">
+                                        <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
+                                            <i class="fab fa-git-alt text-white text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-bold text-lg">Version Control</h4>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-400 text-sm">Git, GitHub, Collaborative workflows</p>
+                                </div>
+
+                                <!-- UI/UX Design -->
+                                <div class="bg-gray-800 rounded-lg p-6">
+                                    <div class="flex items-center space-x-4 mb-4">
+                                        <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-palette text-white text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-bold text-lg">UI/UX Design</h4>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-400 text-sm">Figma, User experience</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Soft Skills -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-6 text-center">Soft Skills</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <!-- Communication -->
+                                <div class="bg-gray-800 rounded-lg p-6">
+                                    <div class="flex items-center space-x-4 mb-4">
+                                        <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-users text-white text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-bold text-lg">Communication</h4>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-400 text-sm">Excellent verbal & written skills</p>
+                                </div>
+
+                                <!-- Team Work -->
+                                <div class="bg-gray-800 rounded-lg p-6">
+                                    <div class="flex items-center space-x-4 mb-4">
+                                        <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-users-cog text-white text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-bold text-lg">Team Work</h4>
+                                            
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-400 text-sm">Collaborative project success</p>
+                                </div>
+
+                                <!-- Problem Solving -->
+                                <div class="bg-gray-800 rounded-lg p-6">
+                                    <div class="flex items-center space-x-4 mb-4">
+                                        <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-lightbulb text-white text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-bold text-lg">Problem Solving</h4>
+                                            
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-400 text-sm">Creative approach to challenges</p>
+                                </div>
+
+                                <!-- Time Management -->
+                                <div class="bg-gray-800 rounded-lg p-6">
+                                    <div class="flex items-center space-x-4 mb-4">
+                                        <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-clock text-white text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-bold text-lg">Time Management</h4>
+                                           
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-400 text-sm">Efficient project delivery</p>
+                                </div>
+
+                                <!-- Leadership -->
+                                <div class="bg-gray-800 rounded-lg p-6">
+                                    <div class="flex items-center space-x-4 mb-4">
+                                        <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-crown text-white text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-bold text-lg">Leadership</h4>
+                                          
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-400 text-sm">Team guidance & motivation</p>
+                                </div>
+
+                                <!-- Adaptability -->
+                                <div class="bg-gray-800 rounded-lg p-6">
+                                    <div class="flex items-center space-x-4 mb-4">
+                                        <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-sync text-white text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-bold text-lg">Adaptability</h4>
+                                            
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-400 text-sm">Quick learning & flexibility</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- About Section -->
+                    <div id="about" class="content-section">
+                        <h2 class="text-3xl font-bold mb-8">
+                            <span class="gradient-text">About Me</span>
+                        </h2>
+                        
+                        <div class="bg-gray-800 rounded-lg p-6">
+                            <p class="text-gray-300 leading-relaxed mb-6">
+                                I am an advanced Front-End Developer, ICT Guide (Trainer), and Mentor with strong experience in creating responsive, user-friendly websites and supporting learners in building practical digital skills. I focus on clean design, mobile-first layouts, and developing functional web interfaces. As a trainer and mentor, I guide learners through digital tools, web development basics, and real projects, while offering continuous support to help them grow confidently in the tech field.
+                            </p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <h3 class="text-lg font-bold text-white mb-3">Contact Information</h3>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center space-x-2">
+                                            <i class="fas fa-envelope text-red-700 text-sm"></i>
+                                            <span class="text-gray-300 text-sm">lokorifaith@gmail.com</span>
+                                        </div>
+                                        <div class="flex items-center space-x-2">
+                                            <i class="fas fa-phone text-red-700 text-sm"></i>
+                                            <span class="text-gray-300 text-sm">+254 711 905 169</span>
+                                        </div>
+                                        <div class="flex items-center space-x-2">
+                                            <i class="fas fa-map-marker-alt text-red-700 text-sm"></i>
+                                            <span class="text-gray-300 text-sm">Lodwar, Turkana, Kenya</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-lg font-bold text-white mb-3">Languages</h3>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-300">English</span>
+                                            <span class="text-red-700">Fluent</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-300">Swahili</span>
+                                            <span class="text-red-700">Native</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 py-8 border-t border-gray-800">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-400">&copy; 2024 Faith Lokori. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Show section function
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all sidebar items
+            document.querySelectorAll('.sidebar-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Add active class to clicked sidebar item
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
